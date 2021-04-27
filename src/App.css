@@ -1,38 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: unset;
+}
+
+p{
+  margin: 4px 0px;
+}
+
+html{
+  background-color: #fafafa;
+}
+
 .App {
-  text-align: center;
+  /* display: flex; */
+  width: 100%;
+  padding: 40px;
+  background-color: #fafafa;
+  height: 100vh;
+  /* justify-content: space-around; */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.flex{
+  display: flex;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.flex .column {
+  flex: 1;
+  padding: 0px 8px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.droppable-col {
+  width: 100%;
+  min-height: 200px;
+  background-color: #f7f7f7;
+  padding: 10px;
+  border-radius: 7px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.profile-name{
+  color: #2a2a2a;
+  font-weight: 600;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.profile-image{
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.profile-desc{
+  font-size: 12px;
+}
+
+.profile-daysago {
+  font-size: 12px;
+  position: relative;
+  top: 4px;
+}
+
+.pull-right{
+  float:right;
+}
+
+.item {
+  margin-bottom: 15px;
+  background-color: #ffffff;
+  color: #999999;
+  border: 1px solid #eeeeee;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.item.dragging {
+  background-color: coral;
+}
+
+.department{
+  background-color: #f3f3f3;
+  color: #2a2a2a;
+  border: 1px solid #eeeeee;
+  border-radius: 20px;
+  padding: 2px 8px;
+  margin-bottom: 15px;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.newApplicants{
+  color:#F07C7C;
+  margin-bottom: 15px;
+}
+
+.profile-review{
+  color:#ffb12b;
+  margin-bottom: 15px;
+}
+
+
+.telephonic-interview{
+  color:#f09eff;
+  margin-bottom: 15px;
+}
+
+.selected{
+  color:#86dcff;
+  margin-bottom: 15px;
+}
+
+.attachment-icon{
+  font-size: 28px!important;
+  background-color: #f3f3f3;
+  border-radius: 100%;
+  padding: 5px;
+  color: #999999;
+}
+
+.standard-button{
+  background-color: #2a2a2a;
+  border: 0;
+  padding: 10px 20px;
+  color: #fff;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.addCandidate-right{
+  float: right;
+  position: relative;
+  top: -60px;
+}
+
+
+.MuiFormHelperText-root{
+  top: -24px;
+  letter-spacing: 0.03333em;
+  position: relative;
 }

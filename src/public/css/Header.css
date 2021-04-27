@@ -1,0 +1,16 @@
+.underline {
+    height: 1px;
+    width: 30px;
+    border: 2px solid #000;
+    border-radius: 100px;
+    background-color: #000;
+    display: block;
+}
+
+.page-header {
+  margin-bottom: 50px;
+}
+
+.page-header-title {
+    font-size: 26px;
+}
