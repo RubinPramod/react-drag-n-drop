@@ -9,10 +9,10 @@ import Header from "./components/header";
 import AttachFileIcon from '@material-ui/icons/AttachFile';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
-import candidateList from "./data";
+
 import { Button, TextField, Select, MenuItem, Modal, Backdrop, Fade, makeStyles } from '@material-ui/core';
 
-
+import candidateList from "./data";
 const [item, item2, item3, item4] = candidateList;
 
 function App() {
@@ -37,6 +37,7 @@ function App() {
   })
 
 
+  // Add Applicant Modal 
   const useStyles = makeStyles((theme) => ({
     modal: {
       display: 'flex',
@@ -60,6 +61,9 @@ function App() {
   const handleClose = () => {
     setOpen(false);
   };
+
+
+  //Form Submission and validation
   const [text, setText] = useState("");
   const [errorName, setErrorName] = useState(false)
   const [desc, setDesc] = useState("");
@@ -69,32 +73,6 @@ function App() {
   const handleChange = (event) => {
     setDepa(event.target.value);
   };
-
- 
-  const handleDragEnd = ({destination, source}) => {
-
-    if (!destination) {
-      return;
-    }
-
-    if (destination.index === source.index && destination.droppableId === source.droppableId) {
-      return;
-    }
-    // Making a copy of the item before removing it from state
-    const itemCopy = {...state[source.droppableId].items[source.index]}
-    
-    setState( prev => {
-      prev = {...prev}
-      // Removing from previous items array
-      prev[source.droppableId].items.splice(source.index, 1)
-
-      //Adding to new items array location
-      prev[destination.droppableId].items.splice(destination.index, 0, itemCopy);
-
-      return prev
-    }) 
-  }
-
 
   // On click of add btn the cadidate is added to the New Applicants section
   const addItem = () => {
@@ -122,8 +100,7 @@ function App() {
       return;
     }
 
-    
-
+  
     setState(prev => {
       return {
         ...prev,
@@ -150,6 +127,34 @@ function App() {
     setDepa("")
     setOpen(false);
   }
+ 
+  //Dragging and dripping the cards in different columns
+  const handleDragEnd = ({destination, source}) => {
+
+    if (!destination) {
+      return;
+    }
+
+    if (destination.index === source.index && destination.droppableId === source.droppableId) {
+      return;
+    }
+    // Making a copy of the item before removing it from state
+    const itemCopy = {...state[source.droppableId].items[source.index]}
+    
+    setState( prev => {
+      prev = {...prev}
+      // Removing from previous items array
+      prev[source.droppableId].items.splice(source.index, 1)
+
+      //Adding to new items array location
+      prev[destination.droppableId].items.splice(destination.index, 0, itemCopy);
+
+      return prev
+    }) 
+  }
+
+
+
 
   return (
     <div className="App">
