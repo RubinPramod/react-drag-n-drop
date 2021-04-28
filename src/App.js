@@ -112,7 +112,13 @@ function App() {
       setErrorDesc(false);
     }
 
-    if(text == "" || desc == ""){
+    if (depa == "") {
+      setErrorDepa(true)
+    } else {
+      setErrorDepa(false)
+    }
+
+    if(text == "" || desc == "" || depa == ""){
       return;
     }
 
@@ -150,7 +156,7 @@ function App() {
       <Header/>
       
       <button className="standard-button addCandidate-right" type="button" onClick={handleOpen}>
-        Add New Candidate
+        Add New Applicant
       </button>
       <Modal
         aria-labelledby="transition-modal-title"
@@ -166,18 +172,18 @@ function App() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">Add Candidate</h2>
-            <p id="transition-modal-description">Enter the info of your new candiate you want to consider in the hiring process</p>
+            <h2 id="transition-modal-title">Add Applicant</h2>
+            <p id="transition-modal-description">Enter the info of your new applicant you want to consider in the hiring process</p>
             <form className={"candidate-form"} noValidate autoComplete="off">
               <TextField fullWidth error={Boolean(errorName?true:false)} required label="Name" helperText={errorName?"Name cannot be blank":""} variant="outlined" value={text} onChange={(e) => setText(e.target.value)}/>
               <TextField fullWidth error={Boolean(errorDesc?true:false)} required label="Job Title" helperText={errorDesc?"Job Title cannot be blank":""} variant="outlined" value={desc} onChange={(e) => setDesc(e.target.value)}/>
-              <Select fullWidth labelId="demo-customized-select-label" id="demo-customized-select" value={depa} onChange={handleChange} variant="outlined">
+              <Select fullWidth error={Boolean(errorDepa?true:false)} required helperText={errorDepa?"Department cannot be blank":""} variant="outlined" value={desc}  labelId="demo-customized-select-label" id="demo-customized-select" value={depa} onChange={handleChange} variant="outlined">
               <MenuItem disabled value=""><em>Select Department</em></MenuItem>
                   <MenuItem value={"Tech"}>Tech</MenuItem>
                   <MenuItem value={"Sales"}>Sales</MenuItem>
                   <MenuItem value={"Marketing"}>Marketing</MenuItem>
                 </Select>
-              <Button  variant="contained" color="primary" onClick={addItem}>Add Candidate</Button>
+              <Button  variant="contained" color="primary" onClick={addItem}>Add Applicant</Button>
             </form>
           </div>
         </Fade>

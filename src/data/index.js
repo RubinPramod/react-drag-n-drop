@@ -9,7 +9,7 @@ const candidateList = [{
     image: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
   },{
     id: v4(),
-    name: "Vitoria Beckham",
+    name: "Victoria Beckham",
     desc: "Front-End Developer",
     department: "Tech",
     daysago: "2 days ago",

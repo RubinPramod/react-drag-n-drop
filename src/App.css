@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap");
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 
 * {
@@ -47,7 +47,8 @@ html{
 
 .profile-name{
   color: #2a2a2a;
-  font-weight: 600;
+  font-weight: 500;
+  margin-top: 10px;
 }
 
 .profile-image{
