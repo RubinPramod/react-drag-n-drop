@@ -152,3 +152,10 @@ html{
   letter-spacing: 0.03333em;
   position: relative;
 }
+
+
+@media screen and (max-width: 500px) {
+  .addCandidate-right {
+    top: -35px;
+  }
+}
