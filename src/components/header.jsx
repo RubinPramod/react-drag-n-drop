@@ -5,7 +5,7 @@ const header = () => {
     return (
         <div className = {'page-header'} >
             <h1 className = {'page-header-title'}>Applicant Tracker</h1>
-            <span class="underline"></span>
+            <span className="underline"></span>
         </div>
     );
 }

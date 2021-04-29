@@ -28,11 +28,14 @@ html{
 
 .flex{
   display: flex;
+  overflow-x: auto;
+  width: 100%;
 }
 
 .flex .column {
   flex: 1;
   padding: 0px 8px;
+  min-width: 350px;
 }
 
 .droppable-col {

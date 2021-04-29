@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import './public/css/Modal.css'
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import _ from 'lodash'
 import {v4} from "uuid"
 import Header from "./components/header";
-// import AddCandidate from "./components/addCandidate"
 import AttachFileIcon from '@material-ui/icons/AttachFile';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
@@ -17,6 +16,8 @@ const [item, item2, item3, item4] = candidateList;
 
 function App() {
 
+  //  const applicantState = localStorage.getItem("applicantState")
+  
   const [state, setState] = useState({
     "newApplicants": {
       title: "New Applicants",
@@ -36,6 +37,19 @@ function App() {
     }
   })
 
+  useEffect(() => {
+    const applicantState = JSON.parse(localStorage.getItem("applicantState"));
+    if(applicantState){
+      // console.log("hey there")
+      setState(applicantState)
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem("applicantState", JSON.stringify(state));
+    
+  })
+
 
   // Add Applicant Modal 
   const useStyles = makeStyles((theme) => ({
@@ -51,6 +65,8 @@ function App() {
       padding: theme.spacing(2, 4, 3),
     },
   }));
+
+ 
   const [open, setOpen] = React.useState(false);
 
   const classes = useStyles();
@@ -77,26 +93,26 @@ function App() {
   // On click of add btn the cadidate is added to the New Applicants section
   const addItem = () => {
 
-    if(text == ""){
+    if(text === ""){
       setErrorName(true);
     }
     else{
       setErrorName(false);
     }
-    if(desc == ""){
+    if(desc === ""){
       setErrorDesc(true);
     }
     else{
       setErrorDesc(false);
     }
 
-    if (depa == "") {
+    if (depa === "") {
       setErrorDepa(true)
     } else {
       setErrorDepa(false)
     }
 
-    if(text == "" || desc == "" || depa == ""){
+    if(text === "" || desc === "" || depa === ""){
       return;
     }
 
@@ -126,6 +142,9 @@ function App() {
     setDesc("")
     setDepa("")
     setOpen(false);
+ 
+
+
   }
  
   //Dragging and dripping the cards in different columns
@@ -182,7 +201,9 @@ function App() {
             <form className={"candidate-form"} noValidate autoComplete="off">
               <TextField fullWidth error={Boolean(errorName?true:false)} required label="Name" helperText={errorName?"Name cannot be blank":""} variant="outlined" value={text} onChange={(e) => setText(e.target.value)}/>
               <TextField fullWidth error={Boolean(errorDesc?true:false)} required label="Job Title" helperText={errorDesc?"Job Title cannot be blank":""} variant="outlined" value={desc} onChange={(e) => setDesc(e.target.value)}/>
-              <Select fullWidth error={Boolean(errorDepa?true:false)} required helperText={errorDepa?"Department cannot be blank":""} variant="outlined" value={desc}  labelId="demo-customized-select-label" id="demo-customized-select" value={depa} onChange={handleChange} variant="outlined">
+              {/* <Select fullWidth error={Boolean(errorDepa?true:false)} required helperText={errorDepa?"Department cannot be blank":""} variant="outlined" value={desc}  labelId="demo-customized-select-label" id="demo-customized-select" onChange={handleChange}> */}
+              <Select fullWidth error={Boolean(errorDepa?true:false)} required helperText={errorDepa?"Department cannot be blank":""} variant="outlined"  labelId="demo-customized-select-label" id="demo-customized-select" value={depa} onChange={handleChange}>
+
               <MenuItem disabled value=""><em>Select Department</em></MenuItem>
                   <MenuItem value={"Tech"}>Tech</MenuItem>
                   <MenuItem value={"Sales"}>Sales</MenuItem>
